@@ -41,13 +41,18 @@
 			drawDot(C, "C");
 			drawDot(D, "D");
 
-			// point du milieu de A et B
 			const M={
 				x:learp(A.x, B.x, t),
 				y:learp(A.y, B.y, t)
 			}
 
+			const N={
+				x:learp(C.x, D.x, t),
+				y:learp(C.y, D.y, t)
+			}
+
 			drawDot(M, "M", t<0 || t>1);
+			drawDot(N, "N", t<0 || t>1);
 			t+=0.005;
 			requestAnimationFrame(animate);
 		}
