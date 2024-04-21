@@ -29,6 +29,12 @@
 		ctx.moveTo(C.x, C.y);
 		ctx.lineTo(D.x, D.y);
 		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.fillStyle="white";
+		ctx.arc(A.x, A.y, 10, 0, Math.PI* 2.0);
+		ctx.fill();
+		ctx.stroke();
 	</script>
 </body>
 </html>
