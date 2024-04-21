@@ -23,25 +23,34 @@
 		const D={x:250, y:200};
 
 		const ctx=myCanvas.getContext("2d");
-		ctx.beginPath();
-		ctx.moveTo(A.x, A.y);
-		ctx.lineTo(B.x, B.y);
-		ctx.moveTo(C.x, C.y);
-		ctx.lineTo(D.x, D.y);
-		ctx.stroke();
+		let t=0.0;
+		animate();
 
-		drawDot(A, "A");
-		drawDot(B, "B");
-		drawDot(C, "C");
-		drawDot(D, "D");
+		function animate(){
+			// clear the canvas between each frame
+			ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+			ctx.beginPath();
+			ctx.moveTo(A.x, A.y);
+			ctx.lineTo(B.x, B.y);
+			ctx.moveTo(C.x, C.y);
+			ctx.lineTo(D.x, D.y);
+			ctx.stroke();
 
-		// point du milieu de A et B
-		const M={
-			x:learp(A.x, B.x, 0.5),
-			y:learp(A.y, B.y, 0.5)
+			drawDot(A, "A");
+			drawDot(B, "B");
+			drawDot(C, "C");
+			drawDot(D, "D");
+
+			// point du milieu de A et B
+			const M={
+				x:learp(A.x, B.x, t),
+				y:learp(A.y, B.y, t)
+			}
+
+			drawDot(M, "M");
+			t+=0.005;
+			requestAnimationFrame(animate);
 		}
-
-		drawDot(M, "M");
 
 		function learp(A, B, t){
 			return A + (B-A) * t;
