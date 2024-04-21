@@ -23,7 +23,7 @@
 		const D={x:250, y:200};
 
 		const ctx=myCanvas.getContext("2d");
-		let t=0.0;
+		let t=-1.0;
 		animate();
 
 		function animate(){
@@ -47,7 +47,7 @@
 				y:learp(A.y, B.y, t)
 			}
 
-			drawDot(M, "M");
+			drawDot(M, "M", t<0 || t>1);
 			t+=0.005;
 			requestAnimationFrame(animate);
 		}
@@ -56,9 +56,9 @@
 			return A + (B-A) * t;
 		}
 
-		function drawDot(point, label){
+		function drawDot(point, label, isRed){
 			ctx.beginPath();
-			ctx.fillStyle="white";
+			ctx.fillStyle= isRed ? "red" : "white";
 			ctx.arc(point.x, point.y, 10, 0, Math.PI* 2.0);
 			ctx.fill();
 			ctx.stroke();
