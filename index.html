@@ -23,7 +23,6 @@
 		const D={x:250, y:200};
 
 		const ctx=myCanvas.getContext("2d");
-		let t=-1.0;
 		animate();
 
 		function animate(){
@@ -41,23 +40,9 @@
 			drawDot(C, "C");
 			drawDot(D, "D");
 
-			const M={
-				x:lerp(A.x, B.x, t),
-				y:lerp(A.y, B.y, t)
-			}
-
-			const N={
-				x:lerp(C.x, D.x, t),
-				y:lerp(C.y, D.y, t)
-			}
-
-			drawDot(M, "M", t<0 || t>1);
-			drawDot(N, "N", t<0 || t>1);
-
 			const I = getIntersection(A, B, C, D);
 			drawDot(I, "I");
 			
-			t+=0.005;
 			requestAnimationFrame(animate);
 		}
 
