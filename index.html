@@ -30,16 +30,23 @@
 		ctx.lineTo(D.x, D.y);
 		ctx.stroke();
 
-		ctx.beginPath();
-		ctx.fillStyle="white";
-		ctx.arc(A.x, A.y, 10, 0, Math.PI* 2.0);
-		ctx.fill();
-		ctx.stroke();
-		ctx.fillStyle="black";
-		ctx.textAlign="center";
-		ctx.textBaseline="middle";
-		ctx.font="bold 14px Arial";
-		ctx.fillText("A", A.x, A.y);
+		drawDot(A, "A");
+		drawDot(B, "B");
+		drawDot(C, "C");
+		drawDot(D, "D");
+
+		function drawDot(point, label){
+			ctx.beginPath();
+			ctx.fillStyle="white";
+			ctx.arc(point.x, point.y, 10, 0, Math.PI* 2.0);
+			ctx.fill();
+			ctx.stroke();
+			ctx.fillStyle="black";
+			ctx.textAlign="center";
+			ctx.textBaseline="middle";
+			ctx.font="bold 14px Arial";
+			ctx.fillText(label, point.x, point.y);
+		}
 	</script>
 </body>
 </html>
