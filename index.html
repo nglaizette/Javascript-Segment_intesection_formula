@@ -40,7 +40,7 @@
 			B.x = mouse.x - Math.cos(angle) * radius; 
 			B.y = mouse.y + Math.sin(angle) * radius;
 			angle += 0.02;
-			
+
 			// clear the canvas between each frame
 			ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 			ctx.beginPath();
@@ -57,6 +57,10 @@
 
 			const I = getIntersection(A, B, C, D);
 			drawDot(I, "I");
+
+			ctx.beginPath();
+			ctx.rect(myCanvas.width/2.0, 0, I.bottom/100, 10);
+			ctx.fill();
 			
 			requestAnimationFrame(animate);
 		}
@@ -88,7 +92,8 @@
 
 			return {
 				x:lerp(A.x, B.x, t),
-				y:lerp(A.y, B.y, t)
+				y:lerp(A.y, B.y, t),
+				bottom: bottom
 			}
 		}
 
